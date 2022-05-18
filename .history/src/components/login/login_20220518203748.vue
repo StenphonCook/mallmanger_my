@@ -35,16 +35,6 @@ export default {
         handleLogin(){
             this.$http.post('login',this.formdata).then(res=>{
                 console.log(res)
-                const {
-                    data,
-                    meta:{msg,status}
-                } = res.data
-                if (status === 200) {
-                    this.$router.push({name:'home'})
-                    this.$message.success('登录成功')
-                } else {
-                    this.$message.error('账户或密码错误')
-                }
                 /* 登录成功
                 1.跳转home 
                 2.提示成功

@@ -7,12 +7,12 @@
     :model="formdata">
     <h2>用户登陆</h2>
         <el-form-item label="用户名">
-            <el-input v-model="formdata.username"></el-input>
+            <el-input v-model="formdata.name"></el-input>
         </el-form-item>
         <el-form-item label="密码">
             <el-input v-model="formdata.password"></el-input>
         </el-form-item>
-        <el-button class="login-btn" @click.prevent="handleLogin()" type="primary">登录</el-button>
+        <el-button class="login-btn" @click="handleLogin" type="primary">登录</el-button>
     </el-form>
   </div>
 </template>
@@ -35,22 +35,6 @@ export default {
         handleLogin(){
             this.$http.post('login',this.formdata).then(res=>{
                 console.log(res)
-                const {
-                    data,
-                    meta:{msg,status}
-                } = res.data
-                if (status === 200) {
-                    this.$router.push({name:'home'})
-                    this.$message.success('登录成功')
-                } else {
-                    this.$message.error('账户或密码错误')
-                }
-                /* 登录成功
-                1.跳转home 
-                2.提示成功
-                不成功：1.提示信息
-                */
-
             })
         }
     },

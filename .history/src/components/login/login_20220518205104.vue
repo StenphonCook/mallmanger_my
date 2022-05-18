@@ -41,7 +41,7 @@ export default {
                 } = res.data
                 if (status === 200) {
                     this.$router.push({name:'home'})
-                    this.$message.success('登录成功')
+                    this.$message.success('账户或密码错误')
                 } else {
                     this.$message.error('账户或密码错误')
                 }
