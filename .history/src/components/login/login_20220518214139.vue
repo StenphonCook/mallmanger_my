@@ -40,15 +40,13 @@ export default {
                 */
             //    美化写法使用async+await
             const res = await this.$http.post('login',this.formdata)
-                console.log(res)
+                // console.log(res)
                 const {
                     data,
                     meta:{msg,status}
                 } = res.data
 
                 if (status === 200) {
-                    // 保存token
-                    localStorage.setItem('token',data.token)
                     this.$router.push({name:'home'})
                     this.$message.success(msg)
                 } else {
