@@ -32,14 +32,13 @@ export default {
     },
     methods: {
         // 
-       async handleLogin(){
+        handleLogin(){
                 /* 登录成功
                 1.跳转home 
                 2.提示成功
                 不成功：提示信息
                 */
-            //    美化写法
-            const res = await this.$http.post('login',this.formdata)
+            this.$http.post('login',this.formdata).then(res=>{
                 // console.log(res)
                 const {
                     data,
@@ -48,25 +47,11 @@ export default {
 
                 if (status === 200) {
                     this.$router.push({name:'home'})
-                    this.$message.success(msg)
+                    this.$message.success('登录成功')
                 } else {
-                    this.$message.error(msg)
+                    this.$message.error('账户或密码错误')
                 }
-            // 原始写法
-            /* this.$http.post('login',this.formdata).then(res=>{
-                // console.log(res)
-                const {
-                    data,
-                    meta:{msg,status}
-                } = res.data
-
-                if (status === 200) {
-                    this.$router.push({name:'home'})
-                    this.$message.success(msg)
-                } else {
-                    this.$message.error(msg)
-                }
-            }) */
+            })
         }
     },
 }

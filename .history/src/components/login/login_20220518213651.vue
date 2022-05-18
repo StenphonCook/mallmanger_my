@@ -32,14 +32,13 @@ export default {
     },
     methods: {
         // 
-       async handleLogin(){
+        handleLogin(){
                 /* 登录成功
                 1.跳转home 
                 2.提示成功
                 不成功：提示信息
                 */
-            //    美化写法
-            const res = await this.$http.post('login',this.formdata)
+                this.$http.post('login',this.formdata)
                 // console.log(res)
                 const {
                     data,
@@ -52,7 +51,7 @@ export default {
                 } else {
                     this.$message.error(msg)
                 }
-            // 原始写法
+
             /* this.$http.post('login',this.formdata).then(res=>{
                 // console.log(res)
                 const {
