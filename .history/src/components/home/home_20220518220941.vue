@@ -8,7 +8,7 @@
                 </div>
                 </el-col>
                 <el-col :span="18" class="middle">
-                    <h2>电商后台管理系统</h2>
+                    <h3>电商后台管理系统</h3>
                 </el-col>
                 <el-col :span="2">
                 <div class="grid-content bg-purple">
@@ -46,10 +46,6 @@
     }
     /* 头部样式 */
     .middle{
-        text-align: center;
-    }
-    .loginOut{
-        text-decoration: none;
-        line-height: 60px;
+
     }
 </style>

@@ -8,11 +8,11 @@
                 </div>
                 </el-col>
                 <el-col :span="18" class="middle">
-                    <h2>电商后台管理系统</h2>
+                    <h3>电商后台管理系统</h3>
                 </el-col>
                 <el-col :span="2">
                 <div class="grid-content bg-purple">
-                    <a class="loginOut" href="#">退出</a>
+                    <a href="#">退出</a>
                 </div>
                 </el-col>
             </el-row>
@@ -43,13 +43,5 @@
     .main{
         background-color: #e9eef3;
         height: 100%;
-    }
-    /* 头部样式 */
-    .middle{
-        text-align: center;
-    }
-    .loginOut{
-        text-decoration: none;
-        line-height: 60px;
     }
 </style>

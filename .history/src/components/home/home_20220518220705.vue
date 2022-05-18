@@ -4,16 +4,14 @@
             <el-row>
                 <el-col :span="4">
                 <div class="grid-content bg-purple">
-                    <img src="../../assets/logo.jpg" width="32%" alt="无法显示图片">
+                    <img src="../../assets/logo.jpg" width="20%" alt="无法显示图片">
                 </div>
                 </el-col>
-                <el-col :span="18" class="middle">
-                    <h2>电商后台管理系统</h2>
+                <el-col :span="18">
+                <div class="grid-content bg-purple-light"></div>
                 </el-col>
                 <el-col :span="2">
-                <div class="grid-content bg-purple">
-                    <a class="loginOut" href="#">退出</a>
-                </div>
+                <div class="grid-content bg-purple"></div>
                 </el-col>
             </el-row>
         </el-header>
@@ -43,13 +41,5 @@
     .main{
         background-color: #e9eef3;
         height: 100%;
-    }
-    /* 头部样式 */
-    .middle{
-        text-align: center;
-    }
-    .loginOut{
-        text-decoration: none;
-        line-height: 60px;
     }
 </style>
