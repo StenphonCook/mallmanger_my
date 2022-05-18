@@ -25,7 +25,6 @@
                     class="el-menu-vertical-demo"
                     @open="handleOpen"
                     @close="handleClose"
-                    background-color="#d3dce6"
                     text-color="#000"
                     active-text-color="#ffd04b">
                     <el-submenu index="1">

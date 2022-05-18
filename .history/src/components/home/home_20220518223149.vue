@@ -20,12 +20,12 @@
         <el-container>
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
+                    <h5>自定义颜色</h5>
                     <el-menu
                     default-active="2"
                     class="el-menu-vertical-demo"
                     @open="handleOpen"
                     @close="handleClose"
-                    background-color="#d3dce6"
                     text-color="#000"
                     active-text-color="#ffd04b">
                     <el-submenu index="1">
