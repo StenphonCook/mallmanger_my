@@ -21,7 +21,7 @@
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
                     <el-menu
-                    :unique-opened="true"
+                    unique-opened=true
                     >
                     <el-submenu index="1">
                         <template slot="title">

@@ -12,7 +12,7 @@
                 </el-col>
                 <el-col :span="2">
                 <div class="grid-content bg-purple">
-                    <a class="loginOut" @click.prevent="handleSingout()" href="#" >退出</a>
+                    <a class="loginOut" href="#">退出</a>
                 </div>
                 </el-col>
             </el-row>
@@ -21,7 +21,7 @@
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
                     <el-menu
-                    :unique-opened="true"
+                    unique-opened="true"
                     >
                     <el-submenu index="1">
                         <template slot="title">
@@ -111,16 +111,6 @@
         beforeCreate(){
             const token = localStorage.getItem('token')
             if (!token) {
-                this.$router.push({name:'login'})
-            }
-        },
-        methods: {
-            handleSingout(){
-                // 清楚token
-                localStorage.clear()
-                // 提示信息
-                this.$message.success('退出成功')
-                // 来到login组件
                 this.$router.push({name:'login'})
             }
         }

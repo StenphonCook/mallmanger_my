@@ -21,7 +21,7 @@
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
                     <el-menu
-                    :unique-opened="true"
+                    unique-opened="true"
                     >
                     <el-submenu index="1">
                         <template slot="title">
@@ -119,9 +119,7 @@
                 // 清楚token
                 localStorage.clear()
                 // 提示信息
-                this.$message.success('退出成功')
-                // 来到login组件
-                this.$router.push({name:'login'})
+                this.$message.success(msg)
             }
         }
     }
