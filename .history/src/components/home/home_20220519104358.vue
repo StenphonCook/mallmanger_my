@@ -20,9 +20,7 @@
         <el-container>
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
-                    <el-menu
-                    unique-opened="true"
-                    >
+                    <el-menu>
                     <el-submenu index="1">
                         <template slot="title">
                         <i class="el-icon-s-custom"></i>
@@ -79,7 +77,11 @@
                         <el-menu-item-group>
                             <el-menu-item index="4-1">
                                 <i class="el-icon-menu"></i>
-                                <span>订单列表</span> 
+                                <span>选项1</span> 
+                            </el-menu-item>
+                            <el-menu-item index="4-2">
+                                <i class="el-icon-menu"></i>
+                                <span>选项2</span> 
                             </el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
@@ -91,7 +93,11 @@
                         <el-menu-item-group>
                             <el-menu-item index="5-1">
                                 <i class="el-icon-menu"></i>
-                                <span>数据报表</span> 
+                                <span>选项1</span> 
+                            </el-menu-item>
+                            <el-menu-item index="5-2">
+                                <i class="el-icon-menu"></i>
+                                <span>选项2</span> 
                             </el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>

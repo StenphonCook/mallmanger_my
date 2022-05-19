@@ -20,9 +20,7 @@
         <el-container>
             <el-aside class="aside" width="200px">
                   <el-col  :span="24">
-                    <el-menu
-                    unique-opened="true"
-                    >
+                    <el-menu>
                     <el-submenu index="1">
                         <template slot="title">
                         <i class="el-icon-s-custom"></i>
@@ -119,6 +117,7 @@
     }
     .aside{
         background-color: #d3dce6;
+        line-height: 10px;
     }
     .main{
         background-color: #e9eef3;
