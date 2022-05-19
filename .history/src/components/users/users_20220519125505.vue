@@ -81,16 +81,10 @@
         },
         methods: {
             // 获取用户列表请求
-           async getUserList(){
-            // 设置请求头验证token
-            const AUTH_TOKEN =localStorage.getItem('token')
-            this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
-            // 发送请求
+            getUserList(){
               const res = await this.$http.get(`users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`)
-
               console.log(res)
             }
-            
         },
     }
 </script>
