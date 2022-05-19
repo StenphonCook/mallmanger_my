@@ -20,7 +20,7 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        type="index"
+        prop="date"
         label="#"
         width="60">
       </el-table-column>

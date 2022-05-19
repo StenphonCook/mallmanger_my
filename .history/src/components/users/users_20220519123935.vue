@@ -20,34 +20,18 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        type="index"
-        label="#"
-        width="60">
+        prop="date"
+        label="日期"
+        width="180">
       </el-table-column>
       <el-table-column
         prop="name"
         label="姓名"
-        width="80">
+        width="180">
       </el-table-column>
       <el-table-column
         prop="address"
-        label="邮箱">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="电话">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="创建日期">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="用户状态">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="操作">
+        label="地址">
       </el-table-column>
     </el-table>
       <!-- 4.分页 -->

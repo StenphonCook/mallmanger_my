@@ -20,8 +20,8 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        type="index"
-        label="#"
+        prop="date"
+        label="编号"
         width="60">
       </el-table-column>
       <el-table-column
