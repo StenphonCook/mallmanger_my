@@ -60,7 +60,6 @@
             <el-switch
             v-model="scope.row.mg_state"
             active-color="#13ce66"
-            @change="changeMgState(scope.row)"
             inactive-color="#ff4949">
             </el-switch>
         </template>
@@ -133,8 +132,6 @@
             <el-button type="primary" @click="editUser()">确 定</el-button>
         </div>
     </el-dialog>
-
-
   </el-card>
 </template>
 
@@ -282,14 +279,6 @@
                 this.getUserList()
             },
             // #endregion
-
-            // 修改用户状态
-            async changeMgState(user){
-                // 发送请求
-                const res = await this.$http.put(`users/${user.id}/state/${user.mg_state}`)
-                console.log(res)
-            },
-
         },
     }
 </script>

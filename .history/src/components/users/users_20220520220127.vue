@@ -60,7 +60,6 @@
             <el-switch
             v-model="scope.row.mg_state"
             active-color="#13ce66"
-            @change="changeMgState(scope.row)"
             inactive-color="#ff4949">
             </el-switch>
         </template>
@@ -133,8 +132,6 @@
             <el-button type="primary" @click="editUser()">确 定</el-button>
         </div>
     </el-dialog>
-
-
   </el-card>
 </template>
 
@@ -267,7 +264,6 @@
 
 
             // 编辑用户信息——打开对话框
-            // #region
             showEditUserDia(user){
                 // console.log(user)
                 // 获取用户数据
@@ -280,16 +276,7 @@
                 const res = await this.$http.put(`users/${this.form.id}`,this.form)
                 this.dialogFormVisibleEdit = false
                 this.getUserList()
-            },
-            // #endregion
-
-            // 修改用户状态
-            async changeMgState(user){
-                // 发送请求
-                const res = await this.$http.put(`users/${user.id}/state/${user.mg_state}`)
-                console.log(res)
-            },
-
+            }
         },
     }
 </script>
