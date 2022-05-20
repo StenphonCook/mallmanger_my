@@ -7,12 +7,11 @@ import MyHttpServe from '@/plugins/http';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/css/reset.css'
-import moment from 'moment'
+import { HotModuleReplacementPlugin } from 'webpack';
 
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 Vue.use(MyHttpServe)
-
 
 Vue.config.productionTip = false
 

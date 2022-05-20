@@ -211,7 +211,6 @@
             // 添加用户——显示对话框
             // #region
             showAddUserDia(){
-                this.form = {}
                 this.dialogFormVisibleAdd = true
             },
             // 添加用户——发送请求

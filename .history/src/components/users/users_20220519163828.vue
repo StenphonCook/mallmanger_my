@@ -69,9 +69,9 @@
         label="操作">
         <template slot-scope="scope">
             <el-row >
-                <el-button plain @click="showEditUserDia(scope.row)" size="mini" type="primary" icon="el-icon-edit" circle></el-button>
-                <el-button plain @click="showDeleUserMsgBox(scope.row.id)" size="mini" type="danger" icon="el-icon-delete" circle></el-button>
+                <el-button plain @click="showUpdataUserMsgBox(scope.row.id)" size="mini" type="primary" icon="el-icon-edit" circle></el-button>
                 <el-button plain  size="mini" type="success" icon="el-icon-check" circle></el-button>
+                <el-button plain @click="showDeleUserMsgBox(scope.row.id)" size="mini" type="danger" icon="el-icon-delete" circle></el-button>
             </el-row>
         </template>
       </el-table-column>
@@ -92,7 +92,7 @@
     </div>
 
     <!-- 1.添加用户的对话框 -->
-    <el-dialog title="编辑用户" :visible.sync="dialogFormVisibleAdd">
+    <el-dialog title="修改用户" :visible.sync="dialogFormVisibleUpdate">
         <el-form :model="form">
             <el-form-item label="用户名" label-width="100px">
             <el-input v-model="form.username" autocomplete="off"></el-input>
@@ -112,13 +112,14 @@
             <el-button type="primary" @click="addUser()">确 定</el-button>
         </div>
     </el-dialog>
-
-
     <!-- 2.编辑用户对话框 -->
-    <el-dialog title="编辑用户" :visible.sync="dialogFormVisibleEdit">
+    <el-dialog title="修改用户信息" :visible.sync="dialogFormVisibleUpdate">
         <el-form :model="form">
-            <el-form-item  label="用户名"  label-width="100px">
-            <el-input :disabled="true" v-model="form.username" autocomplete="off"></el-input>
+            <el-form-item label="用户名" disabled label-width="100px">
+            <el-input v-model="form.username" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" label-width="100px">
+            <el-input v-model="form.password" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="邮箱" label-width="100px">
             <el-input v-model="form.email" autocomplete="off"></el-input>
@@ -128,8 +129,8 @@
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisibleEdit = false">取 消</el-button>
-            <el-button type="primary" @click="editUser()">确 定</el-button>
+            <el-button @click="dialogFormVisibleUpdate = false">取 消</el-button>
+            <el-button type="primary" @click="UpdateUser()">确 定</el-button>
         </div>
     </el-dialog>
   </el-card>
@@ -149,9 +150,8 @@
                 currentPage1: 1,
                 // 添加对话框属性
                 dialogFormVisibleAdd:false,
-                dialogFormVisibleEdit:false,
                 // 添加用户的表单数据
-                form:{id:'',username:'',password:'',email:'',mobile:''},
+                form:{username:'',password:'',email:'',mobile:''}
             } 
         },
         created () {
@@ -182,23 +182,20 @@
 
 
             // 分页
-            // #region
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
                 this.pagesize = val 
                 this.pagenum = 1   
-                this.getUserList()    
+                this.getUserList()
+                
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
                 this.pagenum = val
                 this.getUserList()
             },
-            // #endregion
-
 
             // 搜索用户
-            //  #region
             searechUser(){
                 this.getUserList()
             },
@@ -206,12 +203,8 @@
             loadUserList(){
                 this.getUserList()
             },
-            //  #endregion
-            
             // 添加用户——显示对话框
-            // #region
             showAddUserDia(){
-                this.form = {}
                 this.dialogFormVisibleAdd = true
             },
             // 添加用户——发送请求
@@ -232,9 +225,7 @@
                     this.$message.warning(msg)
                 }
             },
-            //  #endregion
-            
-            // 删除用户——打开消息盒子（config）
+            // 输出用户——打开消息盒子（config）
             showDeleUserMsgBox(UserId){
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                     confirmButtonText: '确定',
@@ -261,21 +252,8 @@
                         });          
                     });
             },
+            showUpdataUserMsgBox(){
 
-
-            // 编辑用户——打开对话框
-            showEditUserDia(user){
-                // console.log(user)
-                // 获取用户数据
-                this.form = user
-                // 显示弹窗
-                this.dialogFormVisibleEdit = true
-            },
-            // 编辑用户——提交用户信息
-            async editUser(){
-                const res = await this.$http.put(`users/${this.form.id}`,this.form)
-                this.dialogFormVisibleEdit = false
-                this.getUserList()
             }
         },
     }

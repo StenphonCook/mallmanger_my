@@ -187,7 +187,8 @@
                 console.log(`每页 ${val} 条`);
                 this.pagesize = val 
                 this.pagenum = 1   
-                this.getUserList()    
+                this.getUserList()
+                
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
@@ -211,7 +212,6 @@
             // 添加用户——显示对话框
             // #region
             showAddUserDia(){
-                this.form = {}
                 this.dialogFormVisibleAdd = true
             },
             // 添加用户——发送请求
@@ -274,8 +274,7 @@
             // 编辑用户——提交用户信息
             async editUser(){
                 const res = await this.$http.put(`users/${this.form.id}`,this.form)
-                this.dialogFormVisibleEdit = false
-                this.getUserList()
+                console.log(res)
             }
         },
     }

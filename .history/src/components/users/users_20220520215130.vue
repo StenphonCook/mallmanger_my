@@ -151,7 +151,8 @@
                 dialogFormVisibleAdd:false,
                 dialogFormVisibleEdit:false,
                 // 添加用户的表单数据
-                form:{id:'',username:'',password:'',email:'',mobile:''},
+                form:{username:'',password:'',email:'',mobile:''},
+                currUserId:-1
             } 
         },
         created () {
@@ -187,7 +188,8 @@
                 console.log(`每页 ${val} 条`);
                 this.pagesize = val 
                 this.pagenum = 1   
-                this.getUserList()    
+                this.getUserList()
+                
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
@@ -211,7 +213,6 @@
             // 添加用户——显示对话框
             // #region
             showAddUserDia(){
-                this.form = {}
                 this.dialogFormVisibleAdd = true
             },
             // 添加用户——发送请求
@@ -265,7 +266,7 @@
 
             // 编辑用户——打开对话框
             showEditUserDia(user){
-                // console.log(user)
+                console.log(user)
                 // 获取用户数据
                 this.form = user
                 // 显示弹窗
@@ -273,9 +274,7 @@
             },
             // 编辑用户——提交用户信息
             async editUser(){
-                const res = await this.$http.put(`users/${this.form.id}`,this.form)
-                this.dialogFormVisibleEdit = false
-                this.getUserList()
+                const res = await this.$http.put(`users/${user.id}`)
             }
         },
     }

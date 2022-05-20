@@ -10,9 +10,8 @@ import '@/assets/css/reset.css'
 import moment from 'moment'
 
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 Vue.use(MyHttpServe)
-
 
 Vue.config.productionTip = false
 
