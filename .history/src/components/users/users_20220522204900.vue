@@ -134,28 +134,24 @@
         </div>
     </el-dialog>
 
+    <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+
     <!-- 3.修改用户角色 -->
-    <el-dialog title="分配角色" :visible.sync="dialogFormVisibleRol">
+    <el-dialog title="用户角色" :visible.sync="dialogFormVisibleRol">
     <el-form :model="form">
-        <el-form-item label="用户名" label-width="100px">
-            {{currUserName}}
+        <el-form-item label="活动名称" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="角色" label-width="100px">
-
-            <!-- 如果select的绑定的数据的值和option的value一样 就会显示该option的lable值 -->
-        <el-select v-model="currRoleId" placeholder="请选择活动区域">
-            <el-option label="请选择" :value="-1"></el-option>
-            <el-option
-            :label="item.roleName" :value="item.id"
-            v-for="(item, i) in roles" :key="i">
-            </el-option>
+        <el-form-item label="活动区域" :label-width="formLabelWidth">
+        <el-select v-model="form.region" placeholder="请选择活动区域">
+            <el-option label="区域一" value="shanghai"></el-option>
+            <el-option label="区域二" value="beijing"></el-option>
         </el-select>
-
         </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisibleRol = false">取 消</el-button>
-        <el-button type="primary" @click="setRole()">确 定</el-button>
+        <el-button type="primary" @click="dialogFormVisibleRol = false">确 定</el-button>
     </div>
     </el-dialog>
 
@@ -177,14 +173,8 @@
                 // 添加对话框属性
                 dialogFormVisibleAdd:false,
                 dialogFormVisibleEdit:false,
-                dialogFormVisibleRol:false,
                 // 添加用户的表单数据
                 form:{id:'',username:'',password:'',email:'',mobile:''},
-
-                currUserName:'',
-                currUserId:-1,
-                currRoleId:-1,
-                roles:[],
             } 
         },
         created () {
@@ -320,33 +310,6 @@
                 console.log(res)
             },
 
-            // 分配角色
-            // 1.读取用户当前被分配的角色
-            async showSetRoleDia(user){
-                this.dialogFormVisibleRol = true
-                this.currUserName = user.username
-                this.currUserId = user.id
-                const resR = await this.$http.get(`roles`)
-                this.roles = resR.data.data
-                // console.log(resR)
-
-                const res = await this.$http.get(`users/${user.id}`)
-                this.currRoleId = res.data.data.rid
-                console.log(this.currRoleId)
-            },
-            // 2.发送修改结果
-            async setRole(){
-                const res = await this.$http.put(`users/${this.currUserId}/role`,{
-                    rid:this.currRoleId
-                })
-                const {meta:{status,msg}} = res.data
-                if (status === 200) {
-                    this.$message.success(msg)
-                } else {
-                    this.$message.warning(msg)
-                }
-                 this.dialogFormVisibleRol = false
-            }
         },
     }
 </script>

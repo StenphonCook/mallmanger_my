@@ -339,12 +339,12 @@
                 const res = await this.$http.put(`users/${this.currUserId}/role`,{
                     rid:this.currRoleId
                 })
-                const {meta:{status,msg}} = res.data
-                if (status === 200) {
-                    this.$message.success(msg)
+                console.log(res)
+               /*  if () {
+                    
                 } else {
-                    this.$message.warning(msg)
-                }
+                    
+                } */
                  this.dialogFormVisibleRol = false
             }
         },

@@ -325,7 +325,7 @@
             async showSetRoleDia(user){
                 this.dialogFormVisibleRol = true
                 this.currUserName = user.username
-                this.currUserId = user.id
+
                 const resR = await this.$http.get(`roles`)
                 this.roles = resR.data.data
                 // console.log(resR)
@@ -336,15 +336,9 @@
             },
             // 2.发送修改结果
             async setRole(){
-                const res = await this.$http.put(`users/${this.currUserId}/role`,{
-                    rid:this.currRoleId
+                const res = await this.$http.put(`users/:id/role`,{
+
                 })
-                const {meta:{status,msg}} = res.data
-                if (status === 200) {
-                    this.$message.success(msg)
-                } else {
-                    this.$message.warning(msg)
-                }
                  this.dialogFormVisibleRol = false
             }
         },
